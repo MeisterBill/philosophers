@@ -1,6 +1,6 @@
 #include "../Includes/philo.h"
 
-int	argv_parsing(int ac, char **argv, t_data *data)
+static	int	argv_parsing(int ac, char **argv, t_data *data)
 {
 	data->nb_philo = 0;
 	data->must_eat = 0;
@@ -9,22 +9,23 @@ int	argv_parsing(int ac, char **argv, t_data *data)
 	data->time_sleep = 0;
 	data->start_time = get_time();
 	data->is_dead = 0;
-	if (ft_atoi(argv[0], data->nb_philo) ||
-			ft_atoi(argv[1], data->time_die) ||
-			ft_atoi(argv[2], data->time_eat) ||
-			ft_atoi(argv[3], data->time_sleep))
+	if (ft_atoi(argv[1], &data->nb_philo)
+		|| ft_atoi(argv[2], &data->time_die)
+		|| ft_atoi(argv[3], &data->time_eat)
+		|| ft_atoi(argv[4], &data->time_sleep))
 		return (1);
 	if (data->nb_philo < 1)
 		return (1);
 	if (ac == 4)
-		data->must_eat = -1;
-	else
 	{
-		if (ft_atoi(argv[4], data->must_eat))
+		if (ft_atoi(argv[5], &data->must_eat))
 			return (1);
 	}
+	else
+		data->must_eat = -1;
 	return (0);
 }
+
 
 int	main(int ac, char **argv)
 {
@@ -37,8 +38,8 @@ int	main(int ac, char **argv)
 	}
 	if (argv_parsing(ac, argv, &data))
 	{
-		printf("Argument(s) of incorrect type.\n");
+		printf("Argument(s) must be positive integers.\n");
 		return (1);
 	}
-	// test for github pushhhh
+	return (0);
 }

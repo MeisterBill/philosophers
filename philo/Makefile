@@ -1,16 +1,31 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -pedantic -std=c11 -pthread
-SRC = $(wildcard *.c)
-OBJ = $(SRC:.c=.o)
-TARGET = philo
+NAME = philo
 
-all: $(TARGET)
+RM = rm -rf
+CC = gcc -g
+FLAGS = -Wall -Wextra -Werror
 
-$(TARGET): $(OBJ)
-	$(CC) $(CFLAGS) -o $@ $^
+INC = \
+			philo.h \
+
+SRCS = \
+			Sources/main.c \
+			Sources/philo.c \
+			Sources/timing.c \
+
+OBJS = ${SRCS:.c=.o}
+
+all : ${NAME}
+
+$(NAME) : $(OBJS)
+		@$(CC) $(FLAGS) -o $(NAME) $(OBJS)
+
+clean :
+		${RM} ${OBJS}
+
+fclean : clean
+		${RM} ${NAME}
+
+re : fclean all
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c -o $@ $<
-
-clean:
-	rm -f $(OBJ) $(TARGET)
+		${CC} ${FLAGS} -o $@ -c $<
