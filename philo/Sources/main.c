@@ -26,7 +26,6 @@ static	int	argv_parsing(int ac, char **argv, t_data *data)
 	return (0);
 }
 
-
 int	main(int ac, char **argv)
 {
 	t_data	data;

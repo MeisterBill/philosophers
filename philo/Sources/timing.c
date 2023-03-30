@@ -18,12 +18,8 @@ int	ft_isdigit(int i)
 int	ft_atoi(char *str, int *nb)
 {
 	int	i;
-	int	sign;
 
-	sign = 1;
 	i = 0;
-	if (str[i] == '-')
-		return (1);
 	if (!str[i])
 		return (1);
 	while (str[i])
