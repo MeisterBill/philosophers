@@ -11,6 +11,7 @@ SRCS = \
 			Sources/main.c \
 			Sources/philo.c \
 			Sources/timing.c \
+			Sources/free.c \
 
 OBJS = ${SRCS:.c=.o}
 

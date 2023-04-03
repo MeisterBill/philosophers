@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 19:18:32 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:24:18 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,13 @@ static int	malloc_init_pf(t_data *data)
 static	int	create_philos(t_data *data, int i)
 {
 	data->philo[i].id = i;
-	data->philo[i].id = i;
-	data->philo[i].id = i;
-	data->philo[i].id = i;
+	data->philo[i].time_last_eat = get_time();
+	data->philo[i].data = data;
+	data->philo[i].count_eat = data->must_eat;
+	if (pthread_create(&data->philo[i].thread, NULL, &full_cycle, \
+	&data->philo[i]))
+		return (1);
+	return (0);
 }
 
 static	int	init_philo_forks(t_data *data)

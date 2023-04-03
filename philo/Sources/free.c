@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   philo.c                                            :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/03 17:44:07 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 19:32:20 by artvan-d         ###   ########.fr       */
+/*   Created: 2023/04/03 19:28:11 by artvan-d          #+#    #+#             */
+/*   Updated: 2023/04/03 19:28:53 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../Includes/philo.h"
 
-void	*full_cycle(void *curr_philo)
+void	free_philo_and_forks(t_data *data)
 {
-	t_philo	*philo;
-
-	philo = curr_philo;
+	free(data->philo);
+	free(data->forks);
 }
