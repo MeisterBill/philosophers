@@ -1,4 +1,70 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
+/*   Updated: 2023/04/03 19:18:32 by artvan-d         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../Includes/philo.h"
+
+static int	malloc_init_pf(t_data *data)
+{
+	if (pthread_mutex_init(&data->status, NULL))
+		return (1);
+	if (pthread_mutex_init(&data->eat_time, NULL))
+		return (1);
+	data->philo = malloc(data->nb_philo * sizeof(t_philo));
+	if (!data->philo)
+		return (1);
+	data->forks = malloc(data->nb_philo * sizeof(pthread_mutex_t));
+	if (!data->forks)
+	{
+		free(data->philo);
+		return (1);
+	}
+	return (0);
+}
+
+static	int	create_philos(t_data *data, int i)
+{
+	data->philo[i].id = i;
+	data->philo[i].id = i;
+	data->philo[i].id = i;
+	data->philo[i].id = i;
+}
+
+static	int	init_philo_forks(t_data *data)
+{
+	int	i;
+
+	i = 0;
+	if (malloc_init_pf(data))
+		return (1);
+	while (i < data->nb_philo)
+	{
+		if (pthread_mutex_init(&data->forks[i++], NULL))
+		{
+			free_pf(data);
+			return (1);
+		}
+	}
+	i = 0;
+	while (i < data->nb_philo)
+	{
+		if (create_philos(data, i))
+		{
+			free_pf(data);
+			return (1);
+		}
+		i++;
+	}
+	return (0);
+}
 
 static	int	argv_parsing(int ac, char **argv, t_data *data)
 {
@@ -38,6 +104,11 @@ int	main(int ac, char **argv)
 	if (argv_parsing(ac, argv, &data))
 	{
 		printf("Argument(s) must be positive integers.\n");
+		return (1);
+	}
+	if (init_philo_forks(&data))
+	{
+		printf("Some error msg.\n");
 		return (1);
 	}
 	return (0);
