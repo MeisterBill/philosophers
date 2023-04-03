@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:19 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 19:34:57 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/03 19:36:59 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_atoi(char *str, int *nb);
 long	get_time(void);
 
 //  FREE
-void	free_philo_and_forks(t_data *data);
+void	free_pf(t_data *data);
 
 //  PHILO
 void	*full_cycle(void *curr_philo);
