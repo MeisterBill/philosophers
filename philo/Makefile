@@ -9,7 +9,7 @@ INC = \
 
 SRCS = \
 			Sources/main.c \
-			Sources/philo.c \
+			Sources/routine.c \
 			Sources/timing.c \
 			Sources/free.c \
 
