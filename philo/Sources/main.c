@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 19:24:18 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:16:45 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static	int	create_philos(t_data *data, int i)
 	data->philo[i].time_last_eat = get_time();
 	data->philo[i].data = data;
 	data->philo[i].count_eat = data->must_eat;
-	if (pthread_create(&data->philo[i].thread, NULL, &full_cycle, \
+	if (pthread_create(&data->philo[i].thread, NULL, &routine, \
 	&data->philo[i]))
 		return (1);
 	return (0);
@@ -115,5 +115,6 @@ int	main(int ac, char **argv)
 		printf("Some error msg.\n");
 		return (1);
 	}
+	while (1);
 	return (0);
 }

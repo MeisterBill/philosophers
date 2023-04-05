@@ -12,6 +12,7 @@ SRCS = \
 			Sources/routine.c \
 			Sources/timing.c \
 			Sources/free.c \
+			Sources/mutex.c \
 
 OBJS = ${SRCS:.c=.o}
 

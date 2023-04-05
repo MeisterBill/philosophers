@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:19 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 19:36:59 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 14:14:55 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <sys/time.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 typedef struct s_philo
 {
@@ -48,11 +49,16 @@ int		ft_atoi(char *str, int *nb);
 
 //  TIMING
 long	get_time(void);
+long	time_since_start(long start_time);
 
 //  FREE
 void	free_pf(t_data *data);
 
 //  PHILO
-void	*full_cycle(void *curr_philo);
+void	*routine(void *curr_philo);
+
+//  MUTEX
+int		check_if_dead(t_data *data);
+void	lock_and_print(char *str, int id, t_data *data, long timestamp);
 
 #endif

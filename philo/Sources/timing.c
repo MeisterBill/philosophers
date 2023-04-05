@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:12 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/03 17:44:15 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/05 13:58:57 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ long	get_time(void)
 
 	gettimeofday(&curr_time, NULL);
 	return ((curr_time.tv_sec * 1000) + (curr_time.tv_usec / 1000));
+}
+
+long	time_since_start(long start_time)
+{
+	return (get_time() - start_time);
 }
 
 int	ft_isdigit(int i)
