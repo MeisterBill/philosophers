@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:07 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 18:31:20 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:21:05 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	get_right_fork(t_philo *philo)
 		return (philo->id - 1);
 }
 
-static void	eat(t_philo *philo)
+static int	eat(t_philo *philo)
 {
 	int	right_fork;
 
@@ -38,6 +38,7 @@ static void	eat(t_philo *philo)
 	wait_sleepeat(philo->data->time_eat);
 	pthread_mutex_unlock(&philo->data->forks[right_fork]);
 	pthread_mutex_unlock(&philo->data->forks[philo->id]);
+	return (1);
 }
 
 void	*routine(void *curr_philo)

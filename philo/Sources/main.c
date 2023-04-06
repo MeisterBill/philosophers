@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/05 14:16:45 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:28:41 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ static	int	argv_parsing(int ac, char **argv, t_data *data)
 		return (1);
 	if (data->nb_philo < 1)
 		return (1);
-	if (ac == 4)
+	if (ac == 6)
 	{
 		if (ft_atoi(argv[5], &data->must_eat))
 			return (1);
@@ -115,6 +115,7 @@ int	main(int ac, char **argv)
 		printf("Some error msg.\n");
 		return (1);
 	}
-	while (1);
+	perma_death_checker(&data);
+	wait_for_threads(&data);
 	return (0);
 }

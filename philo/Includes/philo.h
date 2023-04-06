@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:19 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 17:08:02 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 22:13:39 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,11 @@ void	*routine(void *curr_philo);
 int		check_if_dead(t_data *data);
 void	lock_and_print(char *str, int id, t_data *data, long timestamp);
 void	update_eat_time(t_philo *philo);
+void	kill_philo(t_data *data);
+long	get_lasteat_time(t_philo *philo);
+
+//  DEATH_CHECKING
+void	perma_death_checker(t_data *data);
+int		wait_for_threads(t_data *data);
 
 #endif
