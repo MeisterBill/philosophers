@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:12 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/05 13:58:57 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:06:20 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,11 @@ long	get_time(void)
 long	time_since_start(long start_time)
 {
 	return (get_time() - start_time);
+}
+
+void	wait_sleepeat(int time)
+{
+	usleep(time * 1000);
 }
 
 int	ft_isdigit(int i)
