@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:12 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 17:06:20 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 17:27:20 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,16 @@ long	time_since_start(long start_time)
 
 void	wait_sleepeat(int time)
 {
-	usleep(time * 1000);
+	long	start;
+	long	elapsed;
+
+	start = get_time();
+	elapsed = 0;
+	while (elapsed < time)
+	{
+		usleep(time * 1000);
+		elapsed = get_time() - start;
+	}
 }
 
 int	ft_isdigit(int i)

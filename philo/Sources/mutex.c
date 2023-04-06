@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/05 13:46:44 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 16:39:49 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:23:54 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,25 @@ int	check_if_dead(t_data *data)
 	return (dead);
 }
 
+/*
 void	lock_and_print(char *str, int id, t_data *data, long timestamp)
 {
 	pthread_mutex_lock(&data->status);
 	if (!data->is_dead)
 		printf("%ld Philosopher %i %s\n", timestamp, id, str);
+	pthread_mutex_unlock(&data->status);
+}*/
+
+void	lock_and_print(char *str, int id, t_data *data, long start_time)
+{
+	long	timestamp;
+
+	pthread_mutex_lock(&data->status);
+	if (!data->is_dead)
+	{
+		timestamp = time_since_start(start_time);
+		printf("%ld Philosopher %i %s\n", timestamp, id, str);
+	}
 	pthread_mutex_unlock(&data->status);
 }
 

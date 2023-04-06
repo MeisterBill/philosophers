@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:07 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 17:10:46 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/06 18:31:20 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ static void	eat(t_philo *philo)
 
 	right_fork = get_right_fork(philo);
 	pthread_mutex_lock(&philo->data->forks[right_fork]);
-	lock_and_print("has picked up a fork.", philo->id, philo->data, \
-		time_since_start(philo->data->start_time));
+	lock_and_print("has picked up a 🤛fork", philo->id, philo->data, \
+		philo->data->start_time);
 	pthread_mutex_lock(&philo->data->forks[philo->id]);
-	lock_and_print("has picked up a fork.", philo->id, philo->data,
-		time_since_start(philo->data->start_time));
+	lock_and_print("has picked up a 🤛fork🤜", philo->id, philo->data, \
+		philo->data->start_time);
 	update_eat_time(philo);
 	philo->count_eat--;
-	lock_and_print("is eating.", philo->id, philo->data,
-		time_since_start(philo->data->start_time));
+	lock_and_print("is eating.", philo->id, philo->data, \
+		philo->data->start_time);
 	wait_sleepeat(philo->data->time_eat);
 	pthread_mutex_unlock(&philo->data->forks[right_fork]);
 	pthread_mutex_unlock(&philo->data->forks[philo->id]);
@@ -50,10 +50,10 @@ void	*routine(void *curr_philo)
 	while (!check_if_dead(philo->data) && philo->count_eat != 0)
 	{
 		lock_and_print("is thinking.", philo->id, philo->data, \
-			time_since_start(philo->data->start_time));
+			philo->data->start_time);
 		eat(philo);
 		lock_and_print("is sleeping.", philo->id, philo->data, \
-			time_since_start(philo->data->start_time));
+			philo->data->start_time);
 		wait_sleepeat(philo->data->time_sleep);
 	}
 	return (NULL);
