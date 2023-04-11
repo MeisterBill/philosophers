@@ -38,7 +38,7 @@ void	perma_death_checker(t_data *data)
 	while (!check_if_dead(data))
 	{
 		death_checker(data);
-		usleep(2000);
+		usleep(1000);
 	}
 	free_pf(data);
 }
