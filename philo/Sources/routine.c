@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:07 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:42:43 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:44:04 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,10 @@ static int	eat(t_philo *philo)
 	lock_and_print("has taken a fork", philo->id, philo->data, \
 		philo->data->start_time);
 	if (philo->data->nb_philo == 1)
+	{
+		pthread_mutex_unlock(&philo->data->forks[right_fork]);
 		return (0);
+	}
 	pthread_mutex_lock(&philo->data->forks[philo->id]);
 	lock_and_print("has taken a fork", philo->id, philo->data, \
 		philo->data->start_time);
