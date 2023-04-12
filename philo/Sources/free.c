@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 19:28:11 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 22:26:01 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:16:04 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ int	wait_for_threads(t_data *data)
 			return (1);
 		i++;
 	}
-	return (1);
+	return (0);
 }

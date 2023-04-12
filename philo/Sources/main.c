@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 22:28:41 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:16:16 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ static	int	init_philo_forks(t_data *data)
 		}
 	}
 	i = 0;
+	data->start_time = get_time();
 	while (i < data->nb_philo)
 	{
 		if (create_philos(data, i))
@@ -77,7 +78,6 @@ static	int	argv_parsing(int ac, char **argv, t_data *data)
 	data->time_die = 0;
 	data->time_eat = 0;
 	data->time_sleep = 0;
-	data->start_time = get_time();
 	data->is_dead = 0;
 	if (ft_atoi(argv[1], &data->nb_philo)
 		|| ft_atoi(argv[2], &data->time_die)
@@ -117,5 +117,6 @@ int	main(int ac, char **argv)
 	}
 	perma_death_checker(&data);
 	wait_for_threads(&data);
+	free_pf(&data);
 	return (0);
 }

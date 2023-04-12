@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/06 21:22:16 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/06 22:28:31 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:15:57 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	death_checker(t_data *data)
 		{
 			kill_philo(data);
 			if (data->philo[i].count_eat != 0)
-				printf("%ld Philosopher %d has died.\n", \
+				printf("%ld %d died\n", \
 					time_since_start(data->start_time), data->philo[i].id);
 			return ;
 		}
@@ -38,7 +38,6 @@ void	perma_death_checker(t_data *data)
 	while (!check_if_dead(data))
 	{
 		death_checker(data);
-		usleep(1000);
+		usleep(500);
 	}
-	free_pf(data);
 }
