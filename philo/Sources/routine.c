@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:07 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/12 17:50:12 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/12 18:42:43 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->data->forks[right_fork]);
 	lock_and_print("has taken a fork", philo->id, philo->data, \
 		philo->data->start_time);
+	if (philo->data->nb_philo == 1)
+		return (0);
 	pthread_mutex_lock(&philo->data->forks[philo->id]);
 	lock_and_print("has taken a fork", philo->id, philo->data, \
 		philo->data->start_time);
@@ -53,9 +55,13 @@ void	*routine(void *curr_philo)
 		lock_and_print("is thinking", philo->id, philo->data, \
 			philo->data->start_time);
 		eat(philo);
+		if (philo->data->nb_philo == 1)
+			break ;
 		lock_and_print("is sleeping", philo->id, philo->data, \
 			philo->data->start_time);
 		wait_sleepeat(philo->data->time_sleep);
 	}
+	if (philo->data->nb_philo == 1)
+		wait_sleepeat(philo->data->time_die + 100);
 	return (NULL);
 }
