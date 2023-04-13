@@ -6,7 +6,7 @@
 /*   By: artvan-d <artvan-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/03 17:44:00 by artvan-d          #+#    #+#             */
-/*   Updated: 2023/04/12 18:16:16 by artvan-d         ###   ########.fr       */
+/*   Updated: 2023/04/13 13:40:16 by artvan-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,7 +112,7 @@ int	main(int ac, char **argv)
 	}
 	if (init_philo_forks(&data))
 	{
-		printf("Some error msg.\n");
+		printf("Malloc failed.\n");
 		return (1);
 	}
 	perma_death_checker(&data);
